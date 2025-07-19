@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -16,20 +16,44 @@ import {
   Briefcase,
   MessageSquare,
   ExternalLink,
-  Github
+  Github,
+  Sparkles,
+  Terminal,
+  Rocket,
+  Globe,
+  Star,
+  ChevronDown,
+  ArrowRight,
+  Zap
 } from "lucide-react";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const skills = [
-    { name: "C", level: 85, icon: "C" },
-    { name: "C++", level: 80, icon: "C++" },
-    { name: "Python", level: 75, icon: "Python" },
-    { name: "Java", level: 70, icon: "Java" },
-    { name: "HTML", level: 90, icon: "HTML" },
-    { name: "CSS", level: 85, icon: "CSS" }
+    { name: "C", level: 85, icon: Terminal, description: "System Programming & Data Structures" },
+    { name: "C++", level: 80, icon: Code2, description: "Object-Oriented Programming & Algorithms" },
+    { name: "Python", level: 75, icon: Sparkles, description: "Data Science & Web Development" },
+    { name: "Java", level: 70, icon: Zap, description: "Enterprise Applications & Backend" },
+    { name: "HTML", level: 90, icon: Globe, description: "Modern Web Structure & Semantics" },
+    { name: "CSS", level: 85, icon: Star, description: "Responsive Design & Animations" }
   ];
+
+  const features = [
+    { icon: Rocket, title: "Fast Learner", description: "Quick to adapt and master new technologies" },
+    { icon: Code2, title: "Problem Solver", description: "Love tackling complex coding challenges" },
+    { icon: Star, title: "Detail Oriented", description: "Focus on clean, efficient code" },
+    { icon: Globe, title: "Team Player", description: "Collaborate effectively in group projects" }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -40,20 +64,31 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-subtle">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md z-50 border-b">
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-background/95 backdrop-blur-xl border-b shadow-soft' 
+          : 'bg-background/60 backdrop-blur-md border-b-transparent'
+      }`}>
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <div className="text-xl font-bold text-primary">Vikas Mutalwad</div>
+            <div className="text-xl font-bold bg-gradient-tech bg-clip-text text-transparent">
+              Vikas Mutalwad
+            </div>
             <div className="hidden md:flex space-x-8">
               {["home", "about", "skills", "projects", "contact"].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`capitalize transition-all duration-300 hover:text-accent ${
-                    activeSection === section ? "text-accent font-medium" : "text-foreground"
+                  className={`capitalize relative px-3 py-2 rounded-lg transition-all duration-300 hover:bg-accent/10 ${
+                    activeSection === section 
+                      ? "text-accent font-medium bg-accent/5" 
+                      : "text-foreground hover:text-accent"
                   }`}
                 >
                   {section}
+                  {activeSection === section && (
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-tech"></div>
+                  )}
                 </button>
               ))}
             </div>
@@ -62,96 +97,213 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center pt-20">
-        <div className="container mx-auto px-6">
+      <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-20 h-20 border border-accent rounded-full animate-float"></div>
+          <div className="absolute top-40 right-20 w-16 h-16 border border-primary rounded-lg animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute bottom-40 left-20 w-12 h-12 border border-accent rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="text-center md:text-left space-y-6 animate-fade-in">
-                <h1 className="text-4xl md:text-6xl font-bold text-primary">
-                  Hi, I'm <span className="text-accent">Vikas</span>
-                </h1>
-                <h2 className="text-xl md:text-2xl text-tech-gray">
-                  Computer Engineering Student | Programmer
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-lg">
-                  Aspiring Software Developer with a Passion for Code and Innovation
+              <div className="text-center md:text-left space-y-8 animate-fade-in">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                    <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                    <span className="text-sm font-medium text-accent uppercase tracking-wide">Welcome to my portfolio</span>
+                  </div>
+                  <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+                    Hi, I'm <span className="bg-gradient-tech bg-clip-text text-transparent">Vikas</span>
+                  </h1>
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 text-lg md:text-xl text-muted-foreground">
+                    <span>Computer Engineering Student</span>
+                    <div className="w-1 h-1 bg-accent rounded-full"></div>
+                    <span>Programmer</span>
+                    <div className="w-1 h-1 bg-accent rounded-full"></div>
+                    <span>Problem Solver</span>
+                  </div>
+                </div>
+                
+                <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
+                  Aspiring Software Developer with a passion for crafting elegant solutions 
+                  through clean code and innovative thinking.
                 </p>
+                
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                  <Button variant="default" size="lg" className="bg-gradient-tech">
-                    <Download className="mr-2 h-4 w-4" />
+                  <Button variant="default" size="lg" className="bg-gradient-tech hover:shadow-glow transition-all duration-300 group">
+                    <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                     Download Resume
                   </Button>
                   <Button 
                     variant="outline" 
                     size="lg"
                     onClick={() => scrollToSection("contact")}
+                    className="border-accent/30 hover:border-accent hover:bg-accent/5 group"
                   >
-                    <MessageSquare className="mr-2 h-4 w-4" />
+                    <MessageSquare className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
                     Get In Touch
                   </Button>
                 </div>
+                
+                <div className="flex items-center justify-center md:justify-start gap-4 pt-4">
+                  <button onClick={() => scrollToSection("about")} className="text-muted-foreground hover:text-accent transition-colors flex items-center gap-2 group">
+                    <span className="text-sm">Scroll to explore</span>
+                    <ChevronDown className="h-4 w-4 group-hover:translate-y-1 transition-transform" />
+                  </button>
+                </div>
               </div>
+              
               <div className="flex justify-center animate-scale-in">
-                <div className="relative">
-                  <div className="w-80 h-80 rounded-full overflow-hidden shadow-tech border-4 border-accent/20">
+                <div className="relative group">
+                  {/* Glowing Background */}
+                  <div className="absolute inset-0 bg-gradient-tech rounded-full blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                  
+                  {/* Main Image */}
+                  <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-tech border-4 border-accent/20 group-hover:border-accent/40 transition-all duration-500">
                     <img 
                       src="/lovable-uploads/1c3131a5-dfc5-43f5-b3c0-02b3249409c3.png"
                       alt="Vikas Mutalwad - Professional Profile"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
+                  
+                  {/* Floating Elements */}
                   <div className="absolute -top-4 -right-4 animate-float">
-                    <div className="bg-gradient-tech p-3 rounded-full shadow-glow">
+                    <div className="bg-gradient-tech p-4 rounded-full shadow-glow hover:shadow-tech transition-all duration-300 cursor-pointer">
                       <Code2 className="h-6 w-6 text-white" />
+                    </div>
+                  </div>
+                  
+                  <div className="absolute -bottom-4 -left-4 animate-float" style={{animationDelay: '1s'}}>
+                    <div className="bg-background/90 backdrop-blur-sm p-3 rounded-full shadow-soft border border-accent/20">
+                      <Rocket className="h-5 w-5 text-accent" />
+                    </div>
+                  </div>
+                  
+                  <div className="absolute top-1/2 -left-8 animate-float" style={{animationDelay: '2s'}}>
+                    <div className="bg-background/90 backdrop-blur-sm p-2 rounded-lg shadow-soft border border-accent/20">
+                      <Terminal className="h-4 w-4 text-primary" />
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+            
+            {/* Stats Cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 animate-fade-in" style={{animationDelay: '0.5s'}}>
+              {features.map((feature, index) => (
+                <Card key={feature.title} className="bg-background/50 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 group">
+                  <CardContent className="p-4 text-center">
+                    <feature.icon className="h-6 w-6 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                    <h4 className="font-semibold text-sm mb-1">{feature.title}</h4>
+                    <p className="text-xs text-muted-foreground">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-tech-light/50">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">About Me</h2>
-              <div className="w-20 h-1 bg-gradient-tech mx-auto"></div>
+      <section id="about" className="relative py-20 bg-tech-light/30 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-tech rounded-full blur-3xl opacity-5"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent rounded-full blur-3xl opacity-5"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <User className="h-6 w-6 text-accent" />
+                <span className="text-sm font-medium text-accent uppercase tracking-wide">Get to know me</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">About Me</h2>
+              <div className="w-24 h-1 bg-gradient-tech mx-auto mb-4"></div>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Passionate about technology and driven by curiosity to solve complex problems
+              </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6 animate-slide-in">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  I am a student of Computer Engineering at Government Polytechnic Pune, 
-                  with a strong interest in programming and technology. I have completed 
-                  my 10th grade with 94.20% and am currently in my 3rd year of a diploma 
-                  in Computer Science.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  My journey in technology started early, and I've developed a passion 
-                  for problem-solving through code. I'm constantly learning new technologies 
-                  and building projects to enhance my skills.
-                </p>
+            <div className="grid lg:grid-cols-3 gap-8 mb-12">
+              {/* Story Card */}
+              <div className="lg:col-span-2 space-y-6 animate-slide-in">
+                <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300">
+                  <CardContent className="p-8">
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                      <Sparkles className="h-6 w-6 text-accent" />
+                      My Journey
+                    </h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p className="leading-relaxed">
+                        I am a dedicated Computer Engineering student at Government Polytechnic Pune, 
+                        currently in my 3rd year. My academic journey began with achieving 94.20% in 
+                        my 10th grade, setting a strong foundation for my technical pursuits.
+                      </p>
+                      <p className="leading-relaxed">
+                        My passion for programming ignited early, and I've since devoted myself to 
+                        mastering various technologies. From low-level system programming in C to 
+                        modern web development, I love exploring how code can solve real-world problems.
+                      </p>
+                      <p className="leading-relaxed">
+                        I believe in continuous learning and am always eager to embrace new challenges 
+                        that push the boundaries of my technical skills.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
               
+              {/* Education & Stats */}
               <div className="space-y-6 animate-fade-in">
-                <Card className="border-accent/20">
+                <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 group">
                   <CardContent className="p-6">
-                    <div className="flex items-center space-x-4 mb-4">
-                      <BookOpen className="h-8 w-8 text-accent" />
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className="p-2 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
+                        <BookOpen className="h-6 w-6 text-accent" />
+                      </div>
                       <h3 className="text-xl font-semibold">Education</h3>
                     </div>
-                    <div className="space-y-3">
-                      <div>
-                        <h4 className="font-medium">Computer Engineering Diploma</h4>
+                    <div className="space-y-4">
+                      <div className="p-4 bg-accent/5 rounded-lg border border-accent/10">
+                        <h4 className="font-semibold text-primary">Computer Engineering</h4>
                         <p className="text-sm text-muted-foreground">Government Polytechnic Pune</p>
-                        <p className="text-sm text-accent">3rd Year (Current)</p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <Badge variant="secondary" className="bg-accent/10 text-accent">3rd Year</Badge>
+                          <Badge variant="outline">Current</Badge>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-medium">10th Grade</h4>
-                        <p className="text-sm text-muted-foreground">94.20%</p>
+                      <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
+                        <h4 className="font-semibold text-primary">10th Grade</h4>
+                        <p className="text-sm text-muted-foreground">Secondary Education</p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <Badge className="bg-green-500 hover:bg-green-600">94.20%</Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300">
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                      <Trophy className="h-5 w-5 text-accent" />
+                      Quick Stats
+                    </h3>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-muted-foreground">Years of Learning</span>
+                        <span className="font-semibold">3+</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-muted-foreground">Programming Languages</span>
+                        <span className="font-semibold">6</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-muted-foreground">Current Focus</span>
+                        <span className="font-semibold text-accent">Web Dev</span>
                       </div>
                     </div>
                   </CardContent>
@@ -163,149 +315,352 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20">
-        <div className="container mx-auto px-6">
+      <section id="skills" className="relative py-20 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-1/2 left-0 w-72 h-72 bg-gradient-tech rounded-full blur-3xl opacity-5"></div>
+        <div className="absolute bottom-0 right-0 w-48 h-48 bg-accent rounded-full blur-3xl opacity-5"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Technical Skills</h2>
-              <div className="w-20 h-1 bg-gradient-tech mx-auto"></div>
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Code2 className="h-6 w-6 text-accent" />
+                <span className="text-sm font-medium text-accent uppercase tracking-wide">What I know</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">Technical Skills</h2>
+              <div className="w-24 h-1 bg-gradient-tech mx-auto mb-4"></div>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Technologies I've mastered through hands-on learning and practical application
+              </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {skills.map((skill, index) => (
-                <Card key={skill.name} className="border-accent/20 hover:shadow-soft transition-all duration-300 animate-scale-in" style={{animationDelay: `${index * 100}ms`}}>
+                <Card 
+                  key={skill.name} 
+                  className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 hover:shadow-glow transition-all duration-500 animate-scale-in group" 
+                  style={{animationDelay: `${index * 100}ms`}}
+                >
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-semibold">{skill.name}</h3>
-                      <Badge variant="secondary">{skill.level}%</Badge>
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
+                          <skill.icon className="h-5 w-5 text-accent" />
+                        </div>
+                        <h3 className="text-lg font-semibold">{skill.name}</h3>
+                      </div>
+                      <Badge variant="secondary" className="bg-accent/10 text-accent font-semibold">
+                        {skill.level}%
+                      </Badge>
                     </div>
-                    <div className="w-full bg-muted rounded-full h-2">
-                      <div 
-                        className="bg-gradient-tech h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
+                    
+                    <p className="text-sm text-muted-foreground mb-4">{skill.description}</p>
+                    
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Proficiency</span>
+                        <span className="font-medium">{skill.level >= 80 ? 'Advanced' : skill.level >= 60 ? 'Intermediate' : 'Beginner'}</span>
+                      </div>
+                      <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
+                        <div 
+                          className="bg-gradient-tech h-full rounded-full transition-all duration-1000 ease-out relative group-hover:shadow-inner"
+                          style={{ width: `${skill.level}%` }}
+                        >
+                          <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+            
+            {/* Skills Summary */}
+            <div className="bg-background/60 backdrop-blur-sm border border-accent/10 rounded-2xl p-8 animate-fade-in" style={{animationDelay: '0.8s'}}>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold mb-2">Skills Overview</h3>
+                <p className="text-muted-foreground">Constantly evolving and learning new technologies</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent mb-1">6</div>
+                  <div className="text-sm text-muted-foreground">Languages</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent mb-1">3+</div>
+                  <div className="text-sm text-muted-foreground">Years Learning</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent mb-1">80%</div>
+                  <div className="text-sm text-muted-foreground">Avg. Proficiency</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent mb-1">∞</div>
+                  <div className="text-sm text-muted-foreground">Growth Mindset</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-tech-light/50">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-12 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Projects</h2>
-              <div className="w-20 h-1 bg-gradient-tech mx-auto"></div>
+      <section id="projects" className="relative py-20 bg-tech-light/30 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-1/4 right-0 w-56 h-56 bg-gradient-tech rounded-full blur-3xl opacity-5"></div>
+        <div className="absolute bottom-1/4 left-0 w-40 h-40 bg-accent rounded-full blur-3xl opacity-5"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Briefcase className="h-6 w-6 text-accent" />
+                <span className="text-sm font-medium text-accent uppercase tracking-wide">My work</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">Projects</h2>
+              <div className="w-24 h-1 bg-gradient-tech mx-auto mb-4"></div>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Exciting projects in development that will showcase my programming skills and creativity
+              </p>
             </div>
             
-            <Card className="border-accent/20 animate-scale-in">
-              <CardContent className="p-12">
-                <Briefcase className="h-16 w-16 text-accent mx-auto mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Projects Coming Soon</h3>
-                <p className="text-lg text-muted-foreground mb-6">
-                  I'm currently working on exciting projects that showcase my programming skills. 
-                  Stay tuned for updates!
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {/* Coming Soon Card */}
+              <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group">
+                <CardContent className="p-8 text-center">
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
+                      <Rocket className="h-10 w-10 text-white" />
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                      <Sparkles className="h-3 w-3 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Web Development Project</h3>
+                  <p className="text-muted-foreground mb-4">
+                    A full-stack web application using modern technologies like React, Node.js, and databases.
+                  </p>
+                  <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                    In Development
+                  </Badge>
+                </CardContent>
+              </Card>
+
+              {/* Future Projects Card */}
+              <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group" style={{animationDelay: '0.2s'}}>
+                <CardContent className="p-8 text-center">
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
+                      <Terminal className="h-10 w-10 text-white" />
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                      <Code2 className="h-3 w-3 text-white" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Algorithm Visualizer</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Interactive tool to visualize sorting and searching algorithms with step-by-step animations.
+                  </p>
+                  <Badge variant="secondary" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                    Planning
+                  </Badge>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* GitHub Section */}
+            <div className="bg-background/60 backdrop-blur-sm border border-accent/10 rounded-2xl p-8 text-center animate-fade-in" style={{animationDelay: '0.4s'}}>
+              <div className="mb-6">
+                <Github className="h-16 w-16 text-accent mx-auto mb-4" />
+                <h3 className="text-2xl font-bold mb-2">Follow My Journey</h3>
+                <p className="text-muted-foreground max-w-lg mx-auto">
+                  Stay updated with my latest projects and contributions on GitHub. 
+                  I'll be sharing my code and learning progress regularly.
                 </p>
-                <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white">
-                  <Github className="mr-2 h-4 w-4" />
-                  View GitHub
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
+                  <Github className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  View GitHub Profile
                 </Button>
-              </CardContent>
-            </Card>
+                <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
+                  <Star className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  Star My Repos
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20">
-        <div className="container mx-auto px-6">
+      <section id="contact" className="relative py-20 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-tech rounded-full blur-3xl opacity-5"></div>
+        <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-accent rounded-full blur-3xl opacity-5"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12 animate-fade-in">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Get In Touch</h2>
-              <div className="w-20 h-1 bg-gradient-tech mx-auto"></div>
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <MessageSquare className="h-6 w-6 text-accent" />
+                <span className="text-sm font-medium text-accent uppercase tracking-wide">Let's connect</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">Get In Touch</h2>
+              <div className="w-24 h-1 bg-gradient-tech mx-auto mb-4"></div>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Ready to discuss opportunities, collaborations, or just have a chat about technology? 
+                I'd love to hear from you!
+              </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Contact Info */}
-              <div className="space-y-8 animate-slide-in">
-                <div>
-                  <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                  <div className="space-y-4">
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Contact Info Cards */}
+              <div className="lg:col-span-1 space-y-6 animate-slide-in">
+                <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 group">
+                  <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
-                      <div className="bg-accent/10 p-3 rounded-lg">
-                        <Mail className="h-5 w-5 text-accent" />
+                      <div className="p-3 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
+                        <Mail className="h-6 w-6 text-accent" />
                       </div>
-                      <div>
-                        <p className="font-medium">Email</p>
-                        <p className="text-muted-foreground">muttalwadvikas@gmail.com</p>
+                      <div className="flex-1">
+                        <h4 className="font-semibold mb-1">Email Me</h4>
+                        <p className="text-sm text-muted-foreground mb-2">Drop me a line anytime</p>
+                        <a 
+                          href="mailto:muttalwadvikas@gmail.com" 
+                          className="text-accent hover:underline text-sm font-medium"
+                        >
+                          muttalwadvikas@gmail.com
+                        </a>
                       </div>
                     </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 group">
+                  <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
-                      <div className="bg-accent/10 p-3 rounded-lg">
-                        <Phone className="h-5 w-5 text-accent" />
+                      <div className="p-3 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
+                        <Phone className="h-6 w-6 text-accent" />
                       </div>
-                      <div>
-                        <p className="font-medium">Phone</p>
-                        <p className="text-muted-foreground">+91 9322807300</p>
+                      <div className="flex-1">
+                        <h4 className="font-semibold mb-1">Call Me</h4>
+                        <p className="text-sm text-muted-foreground mb-2">Let's have a conversation</p>
+                        <a 
+                          href="tel:+919322807300" 
+                          className="text-accent hover:underline text-sm font-medium"
+                        >
+                          +91 9322807300
+                        </a>
                       </div>
                     </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 group">
+                  <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
-                      <div className="bg-accent/10 p-3 rounded-lg">
-                        <Linkedin className="h-5 w-5 text-accent" />
+                      <div className="p-3 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
+                        <Linkedin className="h-6 w-6 text-accent" />
                       </div>
-                      <div>
-                        <p className="font-medium">LinkedIn</p>
+                      <div className="flex-1">
+                        <h4 className="font-semibold mb-1">LinkedIn</h4>
+                        <p className="text-sm text-muted-foreground mb-2">Professional networking</p>
                         <a 
                           href="https://www.linkedin.com/in/vikas-mutalwad-19585a326" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="text-accent hover:underline flex items-center"
+                          className="text-accent hover:underline text-sm font-medium flex items-center gap-1"
                         >
-                          View Profile
-                          <ExternalLink className="h-3 w-3 ml-1" />
+                          Connect with me
+                          <ExternalLink className="h-3 w-3" />
                         </a>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
               
               {/* Contact Form */}
-              <Card className="border-accent/20 animate-scale-in">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-6">Send a Message</h3>
-                  <form className="space-y-4">
-                    <div>
-                      <Input 
-                        placeholder="Your Name" 
-                        className="border-muted focus:border-accent"
-                      />
+              <div className="lg:col-span-2 animate-scale-in">
+                <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300">
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold mb-2 flex items-center gap-3">
+                        <MessageSquare className="h-6 w-6 text-accent" />
+                        Send a Message
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Fill out the form below and I'll get back to you as soon as possible.
+                      </p>
                     </div>
-                    <div>
-                      <Input 
-                        type="email" 
-                        placeholder="Your Email" 
-                        className="border-muted focus:border-accent"
-                      />
-                    </div>
-                    <div>
-                      <Textarea 
-                        placeholder="Your Message" 
-                        rows={5}
-                        className="border-muted focus:border-accent"
-                      />
-                    </div>
-                    <Button className="w-full bg-gradient-tech">
-                      <MessageSquare className="mr-2 h-4 w-4" />
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                    
+                    <form className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium text-foreground">Your Name</label>
+                          <Input 
+                            placeholder="Enter your full name" 
+                            className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium text-foreground">Email Address</label>
+                          <Input 
+                            type="email" 
+                            placeholder="your.email@example.com" 
+                            className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-foreground">Subject</label>
+                        <Input 
+                          placeholder="What's this about?" 
+                          className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-foreground">Message</label>
+                        <Textarea 
+                          placeholder="Tell me about your project, idea, or just say hello!" 
+                          rows={6}
+                          className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50 resize-none"
+                        />
+                      </div>
+                      
+                      <Button className="w-full bg-gradient-tech hover:shadow-glow transition-all duration-300 group">
+                        <MessageSquare className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                        Send Message
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+            
+            {/* Call to Action */}
+            <div className="mt-16 text-center animate-fade-in" style={{animationDelay: '0.3s'}}>
+              <div className="bg-background/60 backdrop-blur-sm border border-accent/10 rounded-2xl p-8">
+                <h3 className="text-xl font-bold mb-2">Let's Build Something Amazing Together</h3>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                  Whether you have a project in mind, want to collaborate, or just want to connect with a fellow developer, 
+                  I'm always excited to meet new people and explore new opportunities.
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5">
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Resume
+                  </Button>
+                  <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5">
+                    <Github className="mr-2 h-4 w-4" />
+                    View GitHub
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
