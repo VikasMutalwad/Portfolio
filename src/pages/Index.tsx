@@ -165,7 +165,7 @@ const Index = () => {
                   {/* Main Image */}
                   <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-tech border-4 border-accent/20 group-hover:border-accent/40 transition-all duration-500">
                     <img 
-                      src="/lovable-uploads/myphoto.jpg"
+                      src="/lovable-uploads/myphoto.png"
                       alt="Vikas Mutalwad - Professional Profile"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
