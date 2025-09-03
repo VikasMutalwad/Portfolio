@@ -132,7 +132,7 @@ const Index = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                  <a href="/esume.pdf" download="Resume.pdf">
+                  <a href="/Vikas_Mutalwad_Resume.pdf" download="Vikas_Mutalwad_Resume.pdf">
                     <Button variant="default" size="lg" className="bg-gradient-tech hover:shadow-glow transition-all duration-300 group">
                      <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                       Download Resume
@@ -205,6 +205,7 @@ const Index = () => {
                 </Card>
               ))}
             </div>
+            
           </div>
         </div>
       </section>
@@ -265,7 +266,7 @@ const Index = () => {
                     <div className="flex items-center space-x-3 mb-6">
                       <div className="p-2 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
                         <BookOpen className="h-6 w-6 text-accent" />
-                      </div>
+                    </div>
                       <h3 className="text-xl font-semibold">Education</h3>
                     </div>
                     <div className="space-y-4">
@@ -275,7 +276,7 @@ const Index = () => {
                         <div className="flex items-center gap-2 mt-2">
                           <Badge variant="secondary" className="bg-accent/10 text-accent">3rd Year</Badge>
                           <Badge variant="outline">Current</Badge>
-                        </div>
+                      </div>
                       </div>
                       <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
                         <h4 className="font-semibold text-primary">10th Grade</h4>
@@ -335,7 +336,6 @@ const Index = () => {
                 Technologies I've mastered through hands-on learning and practical application
               </p>
             </div>
-            </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {skills.map((skill, index) => (
@@ -349,7 +349,7 @@ const Index = () => {
                       <div className="flex items-center gap-3">
                         <div className="p-2 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
                           <skill.icon className="h-5 w-5 text-accent" />
-                        </div>
+                      </div>
                         <h3 className="text-lg font-semibold">{skill.name}</h3>
                       </div>
                       <Badge variant="secondary" className="bg-accent/10 text-accent font-semibold">
@@ -372,12 +372,11 @@ const Index = () => {
                           <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
                         </div>
                     </div>
-                   </div>
+                  </div>
                   </CardContent>
                 </Card>
-              
               ))}
-            
+            </div>
             
             {/* Skills Summary */}
             <div className="bg-background/60 backdrop-blur-sm border border-accent/10 rounded-2xl p-8 animate-fade-in" style={{animationDelay: '0.8s'}}>
@@ -463,11 +462,11 @@ const Index = () => {
                             animationDelay: `${index * 0.2}s`
                           }}
                         ></div>
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Advanced understanding through coursework
-                      </p>
                     </div>
+                    <p className="text-sm text-muted-foreground">
+                        Advanced understanding through coursework
+                    </p>
+                  </div>
                   </CardContent>
                 </Card>
               ))}
@@ -577,17 +576,19 @@ const Index = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
-                  <Github className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                  View GitHub Profile
-                </Button>
+                <a href="https://github.com/VikasMutalwad" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
+                    <Github className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                    View GitHub Profile
+                  </Button>
+                </a>
                 <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
                   <Star className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
                   Star My Repos
                 </Button>
               </div>
             </div>
-            
+            
           </div>
         </div>
       </section>
@@ -612,6 +613,7 @@ const Index = () => {
                 I'd love to hear from you!
               </p>
             </div>
+           </div>
             
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Contact Info Cards */}
@@ -621,7 +623,7 @@ const Index = () => {
                     <div className="flex items-center space-x-4">
                       <div className="p-3 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
                         <Mail className="h-6 w-6 text-accent" />
-                      </div>
+                    </div>
                       <div className="flex-1">
                         <h4 className="font-semibold mb-1">Email Me</h4>
                         <p className="text-sm text-muted-foreground mb-2">Drop me a line anytime</p>
@@ -631,31 +633,28 @@ const Index = () => {
                         >
                           muttalwadvikas@gmail.com
                         </a>
-                      </div>
                     </div>
-                  
-                  </CardContent>
+                  </div>
+                </CardContent>
                 </Card>
-                 </div>
-
+                
                 <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 group">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-4">
                       <div className="p-3 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
                         <Phone className="h-6 w-6 text-accent" />
-                      </div>
+                    </div>
                       <div className="flex-1">
                         <h4 className="font-semibold mb-1">Call Me</h4>
                         <p className="text-sm text-muted-foreground mb-2">Let's have a conversation</p>
                         <a 
                           href="tel:+919322807300" 
                           className="text-accent hover:underline text-sm font-medium"
-                        >
+                        />
                           +91 9322807300
-                        </a>
                       </div>
                     </div>
-                  </CardContent>
+                   </CardContent>
                 </Card>
                 
                 <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 group">
@@ -663,7 +662,8 @@ const Index = () => {
                     <div className="flex items-center space-x-4">
                       <div className="p-3 bg-accent/10 rounded-lg group-hover:bg-accent/20 transition-colors">
                         <Linkedin className="h-6 w-6 text-accent" />
-                      </div>
+                    </div>
+                    </div>
                       <div className="flex-1">
                         <h4 className="font-semibold mb-1">LinkedIn</h4>
                         <p className="text-sm text-muted-foreground mb-2">Professional networking</p>
@@ -676,7 +676,6 @@ const Index = () => {
                           Connect with me
                           <ExternalLink className="h-3 w-3" />
                         </a>
-                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -706,7 +705,7 @@ const Index = () => {
                             placeholder="Enter your full name" 
                             className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
                           />
-                        </div>
+                      </div>
                         <div className="space-y-2">
                           <label className="text-sm font-medium text-foreground">Email Address</label>
                           <Input 
@@ -715,7 +714,7 @@ const Index = () => {
                             placeholder="your.email@example.com" 
                             className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
                           />
-                        </div>
+                      </div>
                       </div>
                       
                       <div className="space-y-2">
@@ -725,10 +724,10 @@ const Index = () => {
                           placeholder="What's this about?" 
                           className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
                         />
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium text-foreground">Message</label>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-foreground">Message</label>
                         <Textarea 
                           name="message"
                           placeholder="Tell me about your project, idea, or just say hello!" 
@@ -742,9 +741,10 @@ const Index = () => {
                       Send Message
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                     </form>
+                  </CardContent>
+                </Card>
+           
             </div>
           </div>
         </div>
