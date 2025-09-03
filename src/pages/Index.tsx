@@ -132,10 +132,12 @@ const Index = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  <a href="/Resume.pdf" download="Resume.pdf">
                   <Button variant="default" size="lg" className="bg-gradient-tech hover:shadow-glow transition-all duration-300 group">
-                    <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                    Download Resume
-                  </Button>
+                   <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                   Download Resume
+                    </Button>
+                    </a>
                   <Button 
                     variant="outline" 
                     size="lg"
@@ -163,7 +165,7 @@ const Index = () => {
                   {/* Main Image */}
                   <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-tech border-4 border-accent/20 group-hover:border-accent/40 transition-all duration-500">
                     <img 
-                      src="/lovable-uploads/1c3131a5-dfc5-43f5-b3c0-02b3249409c3.png"
+                      src="/lovable-uploads/myphoto.jpg"
                       alt="Vikas Mutalwad - Professional Profile"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
