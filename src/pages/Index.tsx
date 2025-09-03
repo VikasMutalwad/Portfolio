@@ -404,6 +404,100 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Core Competencies Section */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-tech rounded-full blur-3xl opacity-5"></div>
+        <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-accent rounded-full blur-3xl opacity-5"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <BookOpen className="h-6 w-6 text-accent" />
+                <span className="text-sm font-medium text-accent uppercase tracking-wide">Academic Foundation</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">Core Competencies</h2>
+              <div className="w-24 h-1 bg-gradient-tech mx-auto mb-4"></div>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Essential subjects mastered through comprehensive coursework and practical learning
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { name: "Data Structures & Algorithms", icon: Terminal, color: "text-blue-500", bgColor: "bg-blue-50 dark:bg-blue-950/20", borderColor: "border-blue-200 dark:border-blue-800" },
+                { name: "Object Oriented Programming", icon: Code2, color: "text-purple-500", bgColor: "bg-purple-50 dark:bg-purple-950/20", borderColor: "border-purple-200 dark:border-purple-800" },
+                { name: "Operating System", icon: Globe, color: "text-green-500", bgColor: "bg-green-50 dark:bg-green-950/20", borderColor: "border-green-200 dark:border-green-800" },
+                { name: "Database Management System", icon: Star, color: "text-orange-500", bgColor: "bg-orange-50 dark:bg-orange-950/20", borderColor: "border-orange-200 dark:border-orange-800" },
+                { name: "Computer Network", icon: Zap, color: "text-cyan-500", bgColor: "bg-cyan-50 dark:bg-cyan-950/20", borderColor: "border-cyan-200 dark:border-cyan-800" },
+                { name: "Cyber Security", icon: Sparkles, color: "text-red-500", bgColor: "bg-red-50 dark:bg-red-950/20", borderColor: "border-red-200 dark:border-red-800" },
+                { name: "IOT and Robotics", icon: Rocket, color: "text-indigo-500", bgColor: "bg-indigo-50 dark:bg-indigo-950/20", borderColor: "border-indigo-200 dark:border-indigo-800" }
+              ].map((competency, index) => (
+                <Card 
+                  key={competency.name} 
+                  className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 hover:shadow-glow transition-all duration-500 animate-scale-in group" 
+                  style={{animationDelay: `${index * 0.1}s`}}
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-4 mb-4">
+                      <div className={`p-3 ${competency.bgColor} ${competency.borderColor} border rounded-xl group-hover:scale-110 transition-transform duration-300`}>
+                        <competency.icon className={`h-6 w-6 ${competency.color}`} />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-primary group-hover:text-accent transition-colors duration-300">
+                          {competency.name}
+                        </h3>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="w-full bg-muted/30 rounded-full h-2 overflow-hidden">
+                        <div 
+                          className="h-full bg-gradient-tech rounded-full animate-progress-bar" 
+                          style={{
+                            width: '90%',
+                            animationDelay: `${index * 0.2}s`
+                          }}
+                        ></div>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Advanced understanding through coursework
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            
+            {/* Competency Stats */}
+            <div className="mt-16 animate-fade-in" style={{animationDelay: '0.8s'}}>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold mb-2">Academic Excellence</h3>
+                <p className="text-muted-foreground">Strong foundation in computer science fundamentals</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent mb-1">7</div>
+                  <div className="text-sm text-muted-foreground">Core Subjects</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent mb-1">90%</div>
+                  <div className="text-sm text-muted-foreground">Avg. Mastery</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent mb-1">3</div>
+                  <div className="text-sm text-muted-foreground">Years Study</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-accent mb-1">100%</div>
+                  <div className="text-sm text-muted-foreground">Commitment</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section id="projects" className="relative py-20 bg-tech-light/30 overflow-hidden">
         {/* Background decoration */}
