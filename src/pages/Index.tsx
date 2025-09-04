@@ -132,7 +132,7 @@ const Index = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                  <a href="/Resume.pdf" download="Vikas_Mutalwad_Resume.pdf">
+                  <a href="/Vikas_Mutalwad.pdf" download="Vikas_Mutalwad_Resume.pdf">
                     <Button variant="default" size="lg" className="bg-gradient-tech hover:shadow-glow transition-all duration-300 group">
                      <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                       Download Resume
