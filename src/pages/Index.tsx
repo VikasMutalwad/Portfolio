@@ -32,26 +32,36 @@ import {
 const ContactForm = () => {
   const [sending, setSending] = useState(false);
 
-  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
+
+  if (sending) {
+    console.log("Submission prevented: already sending");
+    return; // prevent duplicate submissions
+  }
+
   setSending(true);
 
   try {
+    console.log("Sending email...");
     await emailjs.sendForm(
-      "service_v6j1i45",
-      "template_b0rdih4",
+      "service_v6j1i45",       // Your Service ID
+      "template_b0rdih4",      // Your Template ID
       e.currentTarget,
-      "knZ0oPYR0jKRitTY_"
+      "knZ0oPYR0jKRitTY_"      // Your User ID (Public Key)
     );
+    console.log("Email sent successfully");
     alert("Message sent successfully!");
     e.currentTarget.reset();
   } catch (error) {
-    console.error("EmailJS error:", error);
+    console.error("EmailJS error caught:", error);
     alert("Failed to send message, please try again.");
   } finally {
+    console.log("Send email process finished");
     setSending(false);
   }
 };
+
 
 
   return (
