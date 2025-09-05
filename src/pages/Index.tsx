@@ -821,73 +821,10 @@ const Index = () => {
                   </CardContent>
                 </Card>
               </div>
-              
-              {/* Contact Form */}
-              <div className="lg:col-span-2 animate-scale-in">
-                <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300">
-                  <CardContent className="p-8">
-                    <div className="mb-6">
-                      <h3 className="text-2xl font-bold mb-2 flex items-center gap-3">
-                        <MessageSquare className="h-6 w-6 text-accent" />
-                        Send a Message
-                      </h3>
-                      <p className="text-muted-foreground">
-                        Fill out the form below and I'll get back to you as soon as possible.
-                      </p>
-                    </div>
-                    
-                    <form className="space-y-6" name="contact" data-netlify="true">
-                      <input type="hidden" name="form-name" value="contact" />
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <label className="text-sm font-medium text-foreground">Your Name</label>
-                          <Input 
-                            name="name"
-                            placeholder="Enter your full name" 
-                            className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
-                          />
-                      </div>
-                        <div className="space-y-2">
-                          <label className="text-sm font-medium text-foreground">Email Address</label>
-                          <Input 
-                            name="email"
-                            type="email" 
-                            placeholder="your.email@example.com" 
-                            className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
-                          />
-                      </div>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium text-foreground">Subject</label>
-                        <Input 
-                          name="subject"
-                          placeholder="What's this about?" 
-                          className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
-                        />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Message</label>
-                        <Textarea 
-                          name="message"
-                          placeholder="Tell me about your project, idea, or just say hello!" 
-                          rows={6}
-                          className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50 resize-none"
-                        />
-                    </div>
-                    
-                    <Button type="submit" className="w-full bg-gradient-tech hover:shadow-glow transition-all duration-300 group">
-                      <MessageSquare className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                      Send Message
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                     </form>
-                  </CardContent>
-                </Card>
-           
-            </div>
-          </div>
+               </div>
+              <ContactForm />
+
+         
         </div>
       </section>
 
