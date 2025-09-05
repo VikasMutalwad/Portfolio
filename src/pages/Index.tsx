@@ -511,97 +511,141 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
       <section id="projects" className="relative py-20 bg-tech-light/30 overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute top-1/4 right-0 w-56 h-56 bg-gradient-tech rounded-full blur-3xl opacity-5"></div>
-        <div className="absolute bottom-1/4 left-0 w-40 h-40 bg-accent rounded-full blur-3xl opacity-5"></div>
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 animate-fade-in">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Briefcase className="h-6 w-6 text-accent" />
-                <span className="text-sm font-medium text-accent uppercase tracking-wide">My work</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">Projects</h2>
-              <div className="w-24 h-1 bg-gradient-tech mx-auto mb-4"></div>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Exciting projects in development that will showcase my programming skills and creativity
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              {/* Coming Soon Card */}
-              <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group">
-                <CardContent className="p-8 text-center">
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
-                      <Rocket className="h-10 w-10 text-white" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full flex items-center justify-center">
-                      <Sparkles className="h-3 w-3 text-white" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">Web Development Project</h3>
-                  <p className="text-muted-foreground mb-4">
-                    A full-stack web application using modern technologies like React, Node.js, and databases.
-                  </p>
-                  <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
-                    In Development
-                  </Badge>
-                </CardContent>
-              </Card>
+  {/* Background decoration */}
+  <div className="absolute top-1/4 right-0 w-56 h-56 bg-gradient-tech rounded-full blur-3xl opacity-5"></div>
+  <div className="absolute bottom-1/4 left-0 w-40 h-40 bg-accent rounded-full blur-3xl opacity-5"></div>
 
-              {/* Future Projects Card */}
-              <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group" style={{animationDelay: '0.2s'}}>
-                <CardContent className="p-8 text-center">
-                  <div className="relative mb-6">
-                    <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
-                      <Terminal className="h-10 w-10 text-white" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full flex items-center justify-center">
-                      <Code2 className="h-3 w-3 text-white" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">Algorithm Visualizer</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Interactive tool to visualize sorting and searching algorithms with step-by-step animations.
-                  </p>
-                  <Badge variant="secondary" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                    Planning
-                  </Badge>
-                </CardContent>
-              </Card>
-            </div>
+  <div className="container mx-auto px-6 relative z-10">
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-16 animate-fade-in">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <Briefcase className="h-6 w-6 text-accent" />
+          <span className="text-sm font-medium text-accent uppercase tracking-wide">My work</span>
+        </div>
+        <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">Projects</h2>
+        <div className="w-24 h-1 bg-gradient-tech mx-auto mb-4"></div>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          Exciting projects in development that will showcase my programming skills and creativity
+        </p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
+        {/* MedCare – AI Health Assistant Kit */}
+        <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group">
+          <CardContent className="p-8 text-center">
+            <div className="mb-6">
+              <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
+                <Rocket className="h-10 w-10 text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-3">MedCare – AI Health Assistant Kit</h3>
+            <p className="text-muted-foreground mb-2">
+              Full-stack AI-powered health assistant for real-time vitals monitoring, multi-role access, and SOS simulation.
+            </p>
+            <div className="mb-2 text-sm text-accent font-medium">Tech: React.js, Flask, Python, JS</div>
+            <Badge variant="secondary" className="bg-green-100 text-green-800">Complete</Badge>
+          </CardContent>
+        </Card>
+        {/* Web Scraper Application */}
+        <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group">
+          <CardContent className="p-8 text-center">
+            <div className="mb-6">
+              <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
+                <Code2 className="h-10 w-10 text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Web Scraper Application</h3>
+            <p className="text-muted-foreground mb-2">
+              Developed a scraper with Node.js backend and React frontend to extract, process, and display web data dynamically.
+            </p>
+            <div className="mb-2 text-sm text-accent font-medium">Tech: JavaScript, Node.js, React.js</div>
+            <Badge variant="secondary" className="bg-green-100 text-green-800">Complete</Badge>
+          </CardContent>
+        </Card>
+        {/* Radar Detection System */}
+        <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group">
+          <CardContent className="p-8 text-center">
+            <div className="mb-6">
+              <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
+                <Terminal className="h-10 w-10 text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Radar Detection System</h3>
+            <p className="text-muted-foreground mb-2">
+              Radar prototype for object detection and tracking, using ultrasonic/RF sensors with live visualization in Python.
+            </p>
+            <div className="mb-2 text-sm text-accent font-medium">Tech: Arduino, Sensors, Python</div>
+            <Badge variant="secondary" className="bg-green-100 text-green-800">Complete</Badge>
+          </CardContent>
+        </Card>
+        {/* Example: Web Development (existing card) */}
+        <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group">
+          <CardContent className="p-8 text-center">
+            <div className="relative mb-6">
+              <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
+                <Rocket className="h-10 w-10 text-white" />
+              </div>
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                <Sparkles className="h-3 w-3 text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Web Development Project</h3>
+            <p className="text-muted-foreground mb-4">
+              A full-stack web application using modern technologies like React, Node.js, and databases.
+            </p>
+            <Badge variant="secondary" className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+              In Development
+            </Badge>
+          </CardContent>
+        </Card>
+        {/* Example: Algorithm Visualizer (existing card) */}
+        <Card className="bg-background/60 backdrop-blur-sm border-accent/10 hover:border-accent/30 transition-all duration-300 animate-scale-in group" style={{animationDelay: '0.2s'}}>
+          <CardContent className="p-8 text-center">
+            <div className="relative mb-6">
+              <div className="w-20 h-20 bg-gradient-tech rounded-full flex items-center justify-center mx-auto group-hover:scale-105 transition-transform">
+                <Terminal className="h-10 w-10 text-white" />
+              </div>
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                <Code2 className="h-3 w-3 text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Algorithm Visualizer</h3>
+            <p className="text-muted-foreground mb-4">
+              Interactive tool to visualize sorting and searching algorithms with step-by-step animations.
+            </p>
+            <Badge variant="secondary" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+              Planning
+            </Badge>
+          </CardContent>
+        </Card>
+      </div>
 
-            {/* GitHub Section */}
-            <div className="bg-background/60 backdrop-blur-sm border border-accent/10 rounded-2xl p-8 text-center animate-fade-in" style={{animationDelay: '0.4s'}}>
-              <div className="mb-6">
-                <Github className="h-16 w-16 text-accent mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Follow My Journey</h3>
-                <p className="text-muted-foreground max-w-lg mx-auto">
-                  Stay updated with my latest projects and contributions on GitHub. 
-                  I'll be sharing my code and learning progress regularly.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://github.com/VikasMutalwad" target="_blank" rel="noopener noreferrer">
-                  <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
-                    <Github className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                    View GitHub Profile
-                  </Button>
-                </a>
-                <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
-                  <Star className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                  Star My Repos
-                </Button>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </section>
+      {/* GitHub Section (unchanged) */}
+      <div className="bg-background/60 backdrop-blur-sm border border-accent/10 rounded-2xl p-8 text-center animate-fade-in" style={{animationDelay: '0.4s'}}>
+        <div className="mb-6">
+          <Github className="h-16 w-16 text-accent mx-auto mb-4" />
+          <h3 className="text-2xl font-bold mb-2">Follow My Journey</h3>
+          <p className="text-muted-foreground max-w-lg mx-auto">
+            Stay updated with my latest projects and contributions on GitHub.
+            I'll be sharing my code and learning progress regularly.
+          </p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://github.com/VikasMutalwad" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
+              <Github className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+              View GitHub Profile
+            </Button>
+          </a>
+          <Button variant="outline" className="border-accent/30 hover:border-accent hover:bg-accent/5 group">
+            <Star className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+            Star My Repos
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Contact Section */}
       <section id="contact" className="relative py-20 overflow-hidden">
