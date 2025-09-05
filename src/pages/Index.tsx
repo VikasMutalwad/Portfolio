@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import emailjs from "emailjs-com";
+
 import { 
   Code2, 
   Mail, 
@@ -26,6 +28,91 @@ import {
   ArrowRight,
   Zap
 } from "lucide-react";
+// ContactForm component - separated from main Index
+const ContactForm = () => {
+  const [sending, setSending] = useState(false);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+
+    emailjs.sendForm(
+      "service_v6j1i45", // Your Service ID
+      "template_b0rdih4", // Your Template ID
+      e.currentTarget,
+      "knZ0oPYR0jKRitTY_" // Your User ID (Public Key)
+    )
+      .then(() => {
+        alert("Message sent successfully!");
+        e.currentTarget.reset();
+        setSending(false);
+      })
+      .catch(() => {
+        alert("Failed to send message, please try again.");
+        setSending(false);
+      });
+  };
+
+  return (
+    <form onSubmit={sendEmail} className="space-y-6" name="contact">
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-foreground">Your Name</label>
+          <Input
+            name="name"
+            type="text"
+            placeholder="Enter your full name"
+            required
+            className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-foreground">Email Address</label>
+          <Input
+            name="email"
+            type="email"
+            placeholder="your.email@example.com"
+            required
+            className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
+          />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-foreground">Subject</label>
+        <Input
+          name="subject"
+          type="text"
+          placeholder="What's this about?"
+          required
+          className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-foreground">Message</label>
+        <Textarea
+          name="message"
+          placeholder="Tell me about your project, idea, or just say hello!"
+          rows={6}
+          required
+          className="border-accent/20 focus:border-accent focus:ring-1 focus:ring-accent/20 bg-background/50 resize-none"
+        />
+      </div>
+
+      <Button
+        type="submit"
+        disabled={sending}
+        className="w-full bg-gradient-tech hover:shadow-glow transition-all duration-300 group"
+      >
+        <MessageSquare className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+        {sending ? "Sending..." : "Send Message"}
+        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+      </Button>
+    </form>
+  );
+};
+
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
