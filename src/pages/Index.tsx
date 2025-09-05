@@ -32,26 +32,27 @@ import {
 const ContactForm = () => {
   const [sending, setSending] = useState(false);
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSending(true);
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setSending(true);
 
-    emailjs.sendForm(
-      "service_v6j1i45", // Your Service ID
-      "template_b0rdih4", // Your Template ID
+  try {
+    await emailjs.sendForm(
+      "service_v6j1i45",
+      "template_b0rdih4",
       e.currentTarget,
-      "knZ0oPYR0jKRitTY_" // Your User ID (Public Key)
-    )
-      .then(() => {
-        alert("Message sent successfully!");
-        e.currentTarget.reset();
-        setSending(false);
-      })
-      .catch(() => {
-        alert("Failed to send message, please try again.");
-        setSending(false);
-      });
-  };
+      "knZ0oPYR0jKRitTY_"
+    );
+    alert("Message sent successfully!");
+    e.currentTarget.reset();
+  } catch (error) {
+    console.error("EmailJS error:", error);
+    alert("Failed to send message, please try again.");
+  } finally {
+    setSending(false);
+  }
+};
+
 
   return (
     <form onSubmit={sendEmail} className="space-y-6" name="contact">
