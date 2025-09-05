@@ -55,12 +55,13 @@ const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.currentTarget.reset();
   } catch (error) {
     console.error("EmailJS error caught:", error);
-    alert("Failed to send message, please try again.");
+    // alert("Failed to send message, please try again."); // <-- Removed this alert
   } finally {
     console.log("Send email process finished");
     setSending(false);
   }
 };
+
 
 
 
