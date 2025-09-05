@@ -820,12 +820,10 @@ const Index = () => {
                     </div>
                   </CardContent>
                 </Card>
-               <ContactForm />
               </div>
-               </div>
-             
+              <ContactForm />
 
-         
+          </div>
         </div>
       </section>
 
