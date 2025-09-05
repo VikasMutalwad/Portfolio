@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { 
   Code2, Mail, Phone, Linkedin, Download, User, BookOpen, Trophy,
   Briefcase, MessageSquare, ExternalLink, Github, Sparkles, Terminal,
-  Rocket, Globe, Star, ChevronDown, ArrowRight, Zap
+  Rocket, Globe, Star, ChevronDown, ArrowRight, Zap,Database
 } from "lucide-react";
 
 const Index = () => {
